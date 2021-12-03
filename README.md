@@ -20,10 +20,9 @@ In this machine learning project, we have collected the dataset from Kaggle (htt
 *   Decision Tree
 *   Naive Bayes
 
-**File Descriptions**
+**File Descriptions: **
 * dataset.csv: the dataset file.
 * Heart_Disease_Prediction.ipynb: contains the code of data exploration, preparation and modeling.
 * models.pkl: the classification model.
 * heart_disease_app.py: Flask API that bind between the classification model and the web page.
-* templates:
- Heart_Disease_Classifier.html: a web page that contains a form for heart disease testing.
+* templates:  Heart_Disease_Classifier.html: a web page that contains a form for heart disease testing.
