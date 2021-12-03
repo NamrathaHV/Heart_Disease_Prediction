@@ -6,7 +6,7 @@ Heart Disease (including Coronary Heart Disease, Hypertension, and Stroke) remai
 *   On average, someone dies of CVD every 38 seconds. About 2,303 deaths from CVD each day, based on 2016 data.
 *   On average, someone dies of a stroke every 3.70 minutes. About 389.4 deaths from stroke each day, based on 2016 data.
 
-In this machine learning project, we have collected the dataset from Kaggle (https://www.kaggle.com/ronitf/heart-disease-uci) and we will be using Machine Learning to make predictions on whether a person is suffering from Heart Disease or not.
+In this machine learning project, we have collected the dataset from Kaggle (https://archive.ics.uci.edu/ml/datasets/statlog+(heart)) and we will be using Machine Learning to make predictions on whether a person is suffering from Heart Disease or not.
 
 **Problem Statement**
 
