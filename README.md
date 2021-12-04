@@ -15,10 +15,10 @@ In this machine learning project, we have collected the dataset from UCI (https:
 
 **Machine Learning Algorithms**
 
-*   K-Nearest Neighbors
-*   Random Forest
-*   Decision Tree
-*   Naive Bayes
+*   Random Forest Classifier
+*   K-Nearest Neighbors Classifier
+*   Decision Tree Classifier
+*   Naive Bayes Classifier
 
 **File Descriptions:**
 * `dataset.csv` : the dataset file.
