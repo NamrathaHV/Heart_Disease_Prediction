@@ -751,16 +751,26 @@ score_rf = round(accuracy_score(Y_pred_rf,Y_test)*100,2)
 score_rf
 
 """#### **Model Evaluation:**
-In this step we will first define which evaluation metrics we will use to evaluate our model. The most important evaluation metric for this problem domain is sensitivity, specificity, Precision, F1-measure, ROC and mathew correlation coefficient.
+In this step we will first define which evaluation metrics we will use to evaluate our model. The most important evaluation metric for this problem domain is Accuracy, Sensitivity, Specificity, Precision, F1-measure,Log Loss, ROC and mathew correlation coefficient.
 
-**Mathew Correlation coefficient (MCC)**
+
+* **Accuracy:** which refers to how close a measurement is to the true value and can be calculated using the following formula
+
+![image](https://user-images.githubusercontent.com/30470730/72439883-c586f180-37cd-11ea-94a3-09c09cbd4814.png)
+
+* **Precision:** which is how consistent results are when measurements are repeated and can be calculated using the following formula
+
+![image](https://user-images.githubusercontent.com/30470730/72440009-10a10480-37ce-11ea-8f11-0a3352d0646c.png)
+
+
+* **Mathew Correlation coefficient (MCC):**
 
 The Matthews correlation coefficient (MCC), instead, is a more reliable statistical rate which produces a high score only if the prediction obtained good results in all of the four confusion matrix categories (true positives, false negatives, true negatives, and false positives), proportionally both to the size of positive elements and the size of negative elements in the dataset.
 
 ![](https://i.ibb.co/mH6MmG4/mcc.jpg)
 
 
-**Log Loss**
+* **Log Loss:**
 
 Logarithmic loss measures the performance of a classification model where the prediction input is a probability value between 0 and 1. The goal of our machine learning models is to minimize this value. A perfect model would have a log loss of 0. Log loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high log loss.
 
@@ -768,7 +778,7 @@ The graph below shows the range of possible log loss values given a true observa
 
 ![](https://i.ibb.co/6BdDczW/log-loss.jpg)
 
-**F1 Score**
+* **F1 Score:**
 
 F1 Score is the weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. Intuitively it is not as easy to understand as accuracy, but F1 is usually more useful than accuracy, especially if you have an uneven class distribution. Accuracy works best if false positives and false negatives have similar cost. If the cost of false positives and false negatives are very different, it’s better to look at both Precision and Recall. In our case, F1 score is 0.701.
 
@@ -980,7 +990,22 @@ print(prediction)
 if (prediction[0]== 1):
   print('The Person does not have a Heart Disease')
 else:
-  print("The Person will has a Heart Disease by %f "%(prediction))
+  print("The Person is likely to have Heart Disease by %f "%(prediction))
+
+Input = (70,1,4,130,322,0,2,109,0,2.4,2,3,3)
+
+Input_array= np.asarray(Input)
+Input_reshaped = Input_array.reshape(1,-1)
+
+prediction = rf_classifier.predict(Input_reshaped)
+prediction = np.around(prediction)
+
+print(prediction)
+
+if (prediction[0]== 1):
+  print('The Person does not have a Heart Disease')
+else:
+  print("The Person is likely to have Heart Disease by %f "%(prediction))
 
 """## **Save Model**
  
