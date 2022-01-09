@@ -206,7 +206,7 @@ An electrocardiogram records the electrical signals in your heart. It's a common
 ---
 
 **Target variable**
-14. **target**: It is the target variable which we have to predict 1 means patient is suffering from heart risk and 0 means patient is normal. (1 = no disease; 2 = disease)
+14. **target**: It is the target variable which we have to predict 2 means patient is suffering from heart risk and 1 means patient is normal. (1 = no disease; 2 = disease)
 
 ## **Data Visualization**
 Now let's see various visual representations of the data to understand more about relationship between various features.
@@ -684,17 +684,17 @@ sns.heatmap(dataset[top_corr_feature].corr(), annot=True, cmap="RdYlGn", annot_k
 After exploring the dataset, we observed that we need to convert some categorical variables into dummy variables and scale all the values before training the Machine Learning models. First, we'll use the `get_dummies` method to create dummy columns for categorical variables.
 """
 
-#dataset = pd.get_dummies(dataset, columns = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
+dataset = pd.get_dummies(dataset, columns = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
 
 """Now, we will use the `StandardScaler` from `sklearn` to scale my dataset."""
 
-#standardScaler = StandardScaler()
-#columns_to_scale = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
-#dataset[columns_to_scale] = standardScaler.fit_transform(dataset[columns_to_scale])
+standardScaler = StandardScaler()
+columns_to_scale = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
+dataset[columns_to_scale] = standardScaler.fit_transform(dataset[columns_to_scale])
 
-#dataset.head()
+dataset.head()
 
-#dataset.describe()
+dataset.describe()
 
 """### **Train Test Split**
 We'll now import train_test_split to split our dataset into training and testing datasets. Then, we'll import all Machine Learning models we'll be using to train and test the data.
@@ -729,7 +729,6 @@ Now, we'll use the ensemble method, Random Forest Classifier, to create the mode
 
 max_accuracy = 0
 
-
 for x in range(500):
     rf_classifier = RandomForestClassifier(random_state=x)
     rf_classifier.fit(X_train,Y_train)
@@ -751,7 +750,7 @@ score_rf = round(accuracy_score(Y_pred_rf,Y_test)*100,2)
 score_rf
 
 """#### **Model Evaluation:**
-In this step we will first define which evaluation metrics we will use to evaluate our model. The most important evaluation metric for this problem domain is Accuracy, Sensitivity, Specificity, Precision, F1-measure,Log Loss, ROC and mathew correlation coefficient.
+In this step we will first define which evaluation metrics we will use to evaluate our model. The most important evaluation metrics for this problem domain are Accuracy, Sensitivity, Specificity, Precision, F1-measure,Log Loss, ROC and mathew correlation coefficient.
 
 
 * **Accuracy:** which refers to how close a measurement is to the true value and can be calculated using the following formula
@@ -809,7 +808,7 @@ model_results =pd.DataFrame([['Random Forest',acc, prec,rec,specificity, f1,roc,
 
 model_results
 
-Y_pred_rf = np.around(Y_pred_rf)
+Y_pred_rf = np.around(Y_pred_rf) 
 print(metrics.classification_report(Y_test,Y_pred_rf))
 
 plot_roc_curve(rf_classifier,X_test,Y_test)
@@ -977,7 +976,7 @@ plt.savefig("AccuracyScores.png")
 
 """## **Sample Test**"""
 
-Input = (67, 0, 3, 115, 564, 0, 2, 160, 0, 1.6, 2, 0, 7)
+'''Input = (67, 0, 3, 115, 564, 0, 2, 160, 0, 1.6, 2, 0, 7)
 
 Input_array= np.asarray(Input)
 Input_reshaped = Input_array.reshape(1,-1)
@@ -991,8 +990,9 @@ if (prediction[0]== 1):
   print('The Person does not have a Heart Disease')
 else:
   print("The Person is likely to have Heart Disease by %f "%(prediction))
+'''
 
-Input = (70,1,4,130,322,0,2,109,0,2.4,2,3,3)
+'''Input = (70,1,4,130,322,0,2,109,0,2.4,2,3,3)
 
 Input_array= np.asarray(Input)
 Input_reshaped = Input_array.reshape(1,-1)
@@ -1006,6 +1006,7 @@ if (prediction[0]== 1):
   print('The Person does not have a Heart Disease')
 else:
   print("The Person is likely to have Heart Disease by %f "%(prediction))
+'''
 
 """## **Save Model**
  
@@ -1017,7 +1018,7 @@ with open('models.pkl', 'wb') as file:
   pickle.dump(rf_classifier, file)
 
 """## **Conclusion**
-In this project, we used Machine Learning to predict whether a person is suffering from a heart disease. After importing the data, we analysed it using plots. Then, we generated dummy variables for categorical features and scaled other features. We then applied four Machine Learning algorithms, K-Nearest Neighbors Classifier(64.81%), Random Forest Classifier(85.19%), Decision Tree Classifier(70.37%) and Naive Bayes Classifier(74.07%). 
+In this project, we used Machine Learning to predict whether a person is suffering from a heart disease. After importing the data, we analysed it using plots. Then, we generated dummy variables for categorical features and scaled other features. We then applied four Machine Learning algorithms, K-Nearest Neighbors Classifier(79.63%), Random Forest Classifier(85.19%), Decision Tree Classifier(70.37%) and Naive Bayes Classifier(66.67%). 
 
-As we can see from Model Evaluation results, **Random Forest Classifier** is best performer as it has highest test accuracy of 0.8519, sensitivity of 0.866 and specificity of 0.866 and highest f1-score of 0.866 and lowest Log Loss of 19.188.
+As we can see from Model Evaluation results, **Random Forest Classifier** is best performer as it has highest test accuracy of 0.8519, sensitivity of 0.8667 and specificity of 0.8667 and highest f1-score of 0.8667 and lowest Log Loss of 19.1886.
 """
